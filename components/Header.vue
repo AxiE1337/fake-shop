@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import SwapBtn from '../components/ui/SwapBtn.vue'
+
+const handleChangeTheme = (value: string) => {
+  useTheme(value === 'light' ? 'dark' : 'light')
+}
+</script>
 
 <template>
   <header>
@@ -8,7 +14,10 @@
       <button class="btn btn-xs" @click="() => navigateTo('/')">Store</button>
       <div class="flex">
         <Cart />
-        <Menu />
+        <SwapBtn
+          :value="useThemeState().value"
+          :onChange="(value) => handleChangeTheme(value)"
+        />
       </div>
     </nav>
   </header>

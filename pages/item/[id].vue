@@ -25,6 +25,17 @@ const handleAdd = () => {
   }
   useStorage({ key: 'cart', value: cart.value, action: 'set' })
 }
+const handleDelete = () => {
+  if (!isInCart()) return
+  if ((isInCart()?.quantity as number) > 1) {
+    const index = cart.value.findIndex((i) => i.id === isInCart()?.id)
+    cart.value[index].quantity -= 1
+  } else {
+    cart.value = cart.value.filter((i) => i.id !== product.value?.id)
+  }
+  useStorage({ key: 'cart', value: cart.value, action: 'set' })
+}
+
 useHead({
   title: product.value?.title || 'Product',
 })
@@ -42,6 +53,13 @@ useHead({
         <p>{{ 'Description: ' + product?.description }}</p>
         <p>{{ product?.rating?.rate }}</p>
         <button class="btn" @click="handleAdd">add to the cart</button>
+        <button
+          @click="handleDelete"
+          v-if="isInCart()"
+          class="btn btn-square btn-error btn-sm text-2xl"
+        >
+          {{ '-' }}
+        </button>
         <h1 v-if="isInCart()">
           You have {{ isInCart()?.quantity }} in the cart
         </h1>

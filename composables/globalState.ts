@@ -27,7 +27,7 @@ export const useStorage = ({
   action,
 }: {
   key: string
-  value?: ICart[]
+  value?: any
   action: 'set' | 'get'
 }) => {
   switch (action) {
