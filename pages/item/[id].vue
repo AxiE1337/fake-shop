@@ -40,25 +40,23 @@ useHead({
 <template>
   <main class="flex flex-col min-h-screen items-center justify-center">
     <h1 v-if="!product">No product was found</h1>
-    <section v-if="product" class="flex justify-center gap-5 w-4/5">
-      <img :src="product?.image" alt="img" class="w-1/4 rounded" />
-      <div class="flex flex-col justify-center">
+    <section v-if="product" class="flex md:flex-col justify-center gap-5 w-4/5">
+      <img :src="product?.image" alt="img" class="w-1/4 md:w-3/4 rounded p-2" />
+      <div class="flex flex-col justify-center gap-4">
         <h1 class="text-2xl">{{ product?.title }}</h1>
         <h2>{{ 'Price ' + product?.price + '$' }}</h2>
         <h2>{{ 'Category ' + product?.category }}</h2>
         <p>{{ 'Description: ' + product?.description }}</p>
-        <p>{{ product?.rating?.rate }}</p>
-        <button class="btn" @click="handleAdd">add to the cart</button>
-        <button
-          @click="handleDelete"
-          v-if="isInCart()"
-          class="btn btn-square btn-error btn-sm text-2xl"
-        >
-          {{ '-' }}
+        <p>{{ 'Rating: ' + product?.rating?.rate }}</p>
+        <button class="btn indicator m-2" @click="handleAdd">
+          add to the cart
+          <span v-if="isInCart()" class="indicator-item badge">{{
+            isInCart()?.quantity
+          }}</span>
         </button>
-        <h1 v-if="isInCart()">
-          You have {{ isInCart()?.quantity }} in the cart
-        </h1>
+        <button @click="handleDelete" v-if="isInCart()" class="btn w-32 m-2">
+          {{ 'remove 1' }}
+        </button>
       </div>
     </section>
   </main>

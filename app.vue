@@ -10,6 +10,6 @@ onMounted(() => {
   <div :data-theme="theme">
     <Header />
     <NuxtPage />
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>

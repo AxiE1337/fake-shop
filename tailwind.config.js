@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    screens: {
+      md: { max: '768px' },
+    },
   },
   plugins: [require('daisyui')],
   darkMode: ['class', '[data-theme="dark"]'],

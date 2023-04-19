@@ -34,6 +34,7 @@ const handleFilter = () => {
       type="text"
       class="input"
       placeholder="search..."
+      v-if="!pending"
       :value="searchParams"
       @change="(e: any) => searchParams = e.target.value"
     />
@@ -43,20 +44,20 @@ const handleFilter = () => {
         v-for="product in handleFilter()"
         class="flex flex-col gap-2 w-4/5 p-2 shadow-md blurre-in"
       >
+        <img :src="product.image" alt="img" class="w-1/4 rounded md:w-3/4" />
         <h1
           @click="
             () => {
               navigateTo(`/item/${product.id}`)
             }
           "
-          class="cursor-pointer text-2xl"
+          class="cursor-pointer text-2xl hover:underline"
         >
           {{ product.title }}
         </h1>
         <h2>{{ 'Price ' + product.price + '$' }}</h2>
         <h2>{{ 'Category ' + product.category }}</h2>
-        <p>{{ 'Description: ' + product.description }}</p>
-        <img :src="product.image" alt="img" class="w-1/4 rounded" />
+        <p class="md:hidden">{{ product.description }}</p>
         <p>{{ product.rating.rate }}</p>
         <div class="rating">
           <input
