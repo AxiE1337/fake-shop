@@ -1,8 +1,5 @@
 <script setup lang="ts">
 const cart = useCart()
-onMounted(() => {
-  cart.value = useStorage({ key: 'cart', action: 'get' }) || []
-})
 </script>
 <template>
   <button class="btn btn-ghost btn-circle" @click="() => navigateTo('/cart')">

@@ -12,19 +12,20 @@ const { data: categories, pending } = await useFetch<IProduct[]>(
 <template>
   <main class="flex flex-col min-h-screen items-center justify-center">
     <h1>Categories</h1>
-    <div class="flex flex-col gap-5 my-16">
-      <div v-for="category in categories" class="flex bg-slate-300 p-2">
-        <h1
-          @click="
-            () => {
-              navigateTo(`/category/${category}`)
-            }
-          "
-          class="cursor-pointer"
-        >
+    <div class="flex flex-wrap gap-5 my-16 h-full w-4/5">
+      <button
+        v-for="category in categories"
+        @click="
+          () => {
+            navigateTo(`/category/${category}`)
+          }
+        "
+        class="flex btn items-center justify-center border-2 rounded-lg p-5 h-full w-full"
+      >
+        <h1 class="select-none">
           {{ category }}
         </h1>
-      </div>
+      </button>
     </div>
   </main>
 </template>

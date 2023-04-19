@@ -12,7 +12,7 @@ const handleChangeTheme = (value: string) => {
       class="flex items-center justify-between p-2 h-16 bg-slate-600 dark:bg-slate-900 text-white"
     >
       <button class="btn btn-xs" @click="() => navigateTo('/')">Store</button>
-      <div class="flex">
+      <div class="flex gap-2 px-2">
         <Cart />
         <SwapBtn
           :value="useThemeState().value"

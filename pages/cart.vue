@@ -2,9 +2,6 @@
 import { ICart } from '~/types'
 
 const cart = useCart()
-onMounted(() => {
-  cart.value = useStorage({ key: 'cart', action: 'get' }) || []
-})
 const handleAdd = (item: ICart) => {
   if (!item) return
   if (item.quantity > 0) {
@@ -35,12 +32,15 @@ const computeTotal = (): number => {
     <h1 class="text-xl" v-if="cart.length === 0">Cart is empty</h1>
     <div
       v-for="item in cart"
-      class="flex flex-col items-center justify-center gap-1 border-t-2"
+      class="flex flex-col items-center justify-center gap-2 border-t-2 mt-5"
     >
-      <h1 class="cursor-pointer" @click="navigateTo(`/item/${item.id}`)">
-        {{ 'ItemId ' + item.id }}
+      <h1
+        class="cursor-pointer text-xl hover:underline"
+        @click="navigateTo(`/item/${item.id}`)"
+      >
+        {{ item.title }}
       </h1>
-      <h1>{{ item.title }}</h1>
+      <img class="w-20" :src="item.image" :alt="item.title" />
       <h1>{{ item.price + '$' }}</h1>
       <h1>{{ 'Quantity ' + item.quantity }}</h1>
       <div>
@@ -50,6 +50,6 @@ const computeTotal = (): number => {
         <button className="btn btn-xs" @click="() => handleAdd(item)">+</button>
       </div>
     </div>
-    <h1 v-if="cart.length > 0">{{ 'Total:' + computeTotal() }}</h1>
+    <h1 v-if="cart.length > 0">{{ 'Total: ' + computeTotal() + '$' }}</h1>
   </main>
 </template>
