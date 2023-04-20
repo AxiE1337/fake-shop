@@ -44,7 +44,12 @@ const handleFilter = () => {
         v-for="product in handleFilter()"
         class="flex flex-col gap-2 w-4/5 p-2 shadow-md blurre-in"
       >
-        <img :src="product.image" alt="img" class="w-1/4 rounded md:w-3/4" />
+        <nuxt-img
+          :src="product.image"
+          alt="img"
+          loading="lazy"
+          class="w-1/4 rounded md:w-3/4"
+        />
         <h1
           @click="
             () => {

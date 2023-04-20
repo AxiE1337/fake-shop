@@ -45,7 +45,7 @@ const handleCheckOut = () => {
       >
         {{ item.title }}
       </h1>
-      <img class="w-20" :src="item.image" :alt="item.title" />
+      <nuxt-img class="w-20" :src="item.image" :alt="item.title" />
       <h1>{{ item.price + '$' }}</h1>
       <h1>{{ 'Quantity ' + item.quantity }}</h1>
       <div>

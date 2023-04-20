@@ -6,4 +6,5 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  modules: ['@nuxt/image-edge'],
 })

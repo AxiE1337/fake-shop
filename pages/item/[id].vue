@@ -14,8 +14,7 @@ const isInCart = (): ICart | null => {
 const handleAdd = () => {
   if (!product.value) return
   if (isInCart()) {
-    const index = cart.value.findIndex((i) => i.id === isInCart()?.id)
-    cart.value[index].quantity += 1
+    return navigateTo('/cart')
   } else {
     cart.value.push({ ...product.value, quantity: 1 })
   }
@@ -41,7 +40,11 @@ useHead({
   <main class="flex flex-col min-h-screen items-center justify-center">
     <h1 v-if="!product">No product was found</h1>
     <section v-if="product" class="flex md:flex-col justify-center gap-5 w-4/5">
-      <img :src="product?.image" alt="img" class="w-1/4 md:w-3/4 rounded p-2" />
+      <nuxt-img
+        :src="product?.image"
+        alt="img"
+        class="w-1/4 md:w-3/4 rounded p-2"
+      />
       <div class="flex flex-col justify-center gap-4">
         <h1 class="text-2xl">{{ product?.title }}</h1>
         <h2>{{ 'Price ' + product?.price + '$' }}</h2>
@@ -49,7 +52,7 @@ useHead({
         <p>{{ 'Description: ' + product?.description }}</p>
         <p>{{ 'Rating: ' + product?.rating?.rate }}</p>
         <button class="btn indicator m-2" @click="handleAdd">
-          add to the cart
+          {{ !isInCart() ? 'add to the cart' : 'go to the cart' }}
           <span v-if="isInCart()" class="indicator-item badge">{{
             isInCart()?.quantity
           }}</span>
