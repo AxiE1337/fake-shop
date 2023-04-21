@@ -8,8 +8,8 @@ onMounted(() => {
 
 <template>
   <div :data-theme="theme">
-    <Header />
-    <NuxtPage />
-    <!-- <Footer /> -->
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </div>
 </template>
