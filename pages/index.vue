@@ -11,7 +11,7 @@ const { data: categories, pending } = await useFetch<IProduct[]>(
 
 <template>
   <main class="flex flex-col min-h-screen items-center justify-center">
-    <h1>Categories</h1>
+    <h1 class="text-[2rem]">Categories</h1>
     <div class="flex flex-wrap gap-5 my-16 h-full w-4/5">
       <button
         v-for="category in categories"
