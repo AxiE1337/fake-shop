@@ -27,7 +27,6 @@ interface IProps {
   <h2>{{ 'Price ' + product.price + '$' }}</h2>
   <h2>{{ 'Category ' + product.category }}</h2>
   <p class="md:hidden">{{ product.description }}</p>
-  <p>{{ product.rating.rate }}</p>
   <div class="rating">
     <input
       v-for="r in Math.floor(product.rating.rate)"
@@ -36,5 +35,6 @@ interface IProps {
       name="rating-1"
       class="mask mask-star-2 bg-green-400"
     />
+    <p class="ml-2">{{ product.rating.rate }}</p>
   </div>
 </template>
