@@ -69,8 +69,7 @@ const handleSortParams = (value: string) => {
         class="input"
         placeholder="search..."
         v-if="!pending"
-        :value="searchParams"
-        @change="(e: any) => searchParams = e.target.value"
+        v-model="searchParams"
       />
       <div class="flex gap-4" v-if="!pending">
         <button
