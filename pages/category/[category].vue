@@ -106,6 +106,12 @@ const handleSortParams = (value: string) => {
       >
         <Item :product="product" />
       </section>
+      <h1
+        class="absolute top-2/4"
+        v-if="handleSort(products, sortParams, searchParams)?.length === 0"
+      >
+        0 products were found
+      </h1>
     </div>
   </main>
 </template>
